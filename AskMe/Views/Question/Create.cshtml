@@ -1,0 +1,266 @@
+﻿@model AskMe.Models.QuestionViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .question-title{
+        width:80% !important;
+    }
+    .question-details {
+        width: 80% !important;
+    }
+</style>
+<div class="breadcrumbs">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Ask Question</h1>
+            </div>
+            <div class="col-md-12">
+                <div class="crumbs">
+                    <a href="#">Home</a>
+                    <span class="crumbs-span">/</span>
+                    <span class="current">Ask Question</span>
+                </div>
+            </div>
+        </div><!-- End row -->
+    </section><!-- End container -->
+</div><!-- End breadcrumbs -->
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+    <section class="container main-content">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="page-content ask-question">
+                    <div class="boxedtitle page-title"><h2>Ask Question</h2></div>
+                    <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque.</p>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-style form-style-3" id="question-submit">
+                        <form>
+                            <div class="form-inputs clearfix">
+                                <p>
+                                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "required" })
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "question-title" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })                                   
+                                    <span class="form-description">Please choose an appropriate title for the question to answer it even easier .</span>
+                                </p>
+                                <p>
+                                    <label class="required">Category<span>*</span></label>
+                                    <span class="styled-select">
+                                        <select>
+                                            <option value="">Select a Category</option>
+                                            <option value="1">Category 1</option>
+                                            <option value="2">Category 2</option>
+                                        </select>
+                                    </span>
+                                    <span class="form-description">Please choose the appropriate section so easily search for your question .</span>
+                                </p>
+                                <label>Attachment</label>
+                                <div class="fileinputs">
+                                    <input type="file" class="file">
+                                    <div class="fakefile">
+                                        <button type="button" class="button small margin_0">Select file</button>
+                                        <span><i class="icon-arrow-up"></i>Browse</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="form-textarea">
+                                <p>
+                                    @Html.LabelFor(model => model.QuestionDetail, htmlAttributes: new { @class = "required" })
+                                    @Html.TextAreaFor(model => model.QuestionDetail,  new { @class = "question-details" } )
+                                    @Html.ValidationMessageFor(model => model.QuestionDetail, "", new { @class = "text-danger" })                                    
+                                    <span class="form-description">Type the description thoroughly and in detail .</span>
+                                </p>
+                            </div>
+                            <div id="form-inputs clearfix">
+                                <p>
+                                    <label class="required">I Need Help in this Location<span>*</span></label>
+                                    <input type="text" id="question-State" style="width: 82%;">
+                                    <span class="form-description">Please choose an appropriate State for the question to answer.</span>
+                                </p>
+                                <p>
+                                    <label class="required"></label>
+                                    <input type="text" id="question-city" style="width: 82%;">
+                                    <span class="form-description">Please choose an appropriate City for the question to answer.</span>
+                                </p>
+                            </div>
+                            <div class="form-inputs clearfix">
+                                <p class="question_poll_p">
+                                    <label for="remember_answer-828">Notified</label>
+                                    <input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">
+                                    <span class="question_poll">Notified by e-mail at incoming answers.</span>
+                                </p>
+                                <p>
+                                    <label for="remember_answer-828"></label>
+                                    <input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">
+                                    <span class="question_poll">I am interested to get call/message from Lawyer.</span>
+                                </p>
+                                <p>
+                                    <label for="ask_captcha_828" class="required">Captcha<span>*</span></label>
+                                    <input type="text" id="question-title">
+                                </p>
+                            </div>
+                            <p class="form-submit">
+                                <input type="submit" id="publish-question" value="Publish Your Question" class="button color small submit">
+                            </p>
+                        </form>
+                    </div>
+                </div><!-- End page-content -->
+            </div><!-- End main -->
+            <aside class="col-md-3 sidebar">
+                <div class="widget widget_stats">
+                    <h3 class="widget_title">Stats</h3>
+                    <div class="ul_list ul_list-icon-ok">
+                        <ul>
+                            <li><i class="icon-question-sign"></i>Questions ( <span>20</span> )</li>
+                            <li><i class="icon-comment"></i>Answers ( <span>50</span> )</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="widget widget_social">
+                    <h3 class="widget_title">Find Us</h3>
+                    <ul>
+                        <li class="rss-subscribers">
+                            <a href="#" target="_blank">
+                                <strong>
+                                    <i class="icon-rss"></i>
+                                    <span>Subscribe</span><br>
+                                    <small>To RSS Feed</small>
+                                </strong>
+                            </a>
+                        </li>
+                        <li class="facebook-fans">
+                            <a href="#" target="_blank">
+                                <strong>
+                                    <i class="social_icon-facebook"></i>
+                                    <span>5,000</span><br>
+                                    <small>People like it</small>
+                                </strong>
+                            </a>
+                        </li>
+                        <li class="twitter-followers">
+                            <a href="#" target="_blank">
+                                <strong>
+                                    <i class="social_icon-twitter"></i>
+                                    <span>3,000</span><br>
+                                    <small>Followers</small>
+                                </strong>
+                            </a>
+                        </li>
+                        <li class="youtube-subs">
+                            <a href="#" target="_blank">
+                                <strong>
+                                    <i class="icon-play"></i>
+                                    <span>1,000</span><br>
+                                    <small>Subscribers</small>
+                                </strong>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3 class="widget_title">Recent Questions</h3>
+                    <ul class="related-posts">
+                        <li class="related-item">
+                            <h3><a href="#">This is my first Question</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="clear"></div><span>Feb 22, 2014</span>
+                        </li>
+                        <li class="related-item">
+                            <h3><a href="#">This Is My Second Poll Question</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="clear"></div><span>Feb 22, 2014</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside><!-- End sidebar -->
+        </div><!-- End row -->
+    </section><!-- End container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="form-horizontal">
+        <h4>QuestionViewModel</h4>
+        <hr />
+        
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FilePath, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FilePath, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GetCall, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GetCall, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GetCall, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notification, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Notification)
+                    @Html.ValidationMessageFor(model => model.Notification, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceLocationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ServiceLocationId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ServiceLocationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

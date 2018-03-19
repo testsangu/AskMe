@@ -1,0 +1,85 @@
+﻿@model AskMe.Models.QCategoryViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Questions Categories</h1>
+            </div>
+            <div class="col-md-12">
+                <div class="crumbs">
+                    <a href="#">Home</a>
+                    <span class="crumbs-span">/</span>
+                    <span class="current">Questions Categories</span>
+                </div>
+            </div>
+        </div><!-- End row -->
+    </section><!-- End container -->
+</div><!-- End breadcrumbs -->
+
+<div class="row">
+
+    <section class="container main-content">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="page-content page-content-user-profile">
+                    <div class="user-profile-widget">
+                        <h2>Questions Categories</h2>
+                        <div class="ul_list ul_list-icon-ok">
+                            <ul>
+                                <li><i class="icon-question-sign"></i><a href="user_questions.html">Programmers<span> ( <span>30 Questions</span> ) </span></a></li>
+                                <li><i class="icon-comment"></i><a href="user_answers.html">Analytics<span> ( <span>10 Questions</span> ) </span></a></li>
+                                <li><i class="icon-star"></i><a href="user_favorite_questions.html">Management<span> ( <span>3 Questions</span> ) </span></a></li>
+                                <li><i class="icon-heart"></i><a href="user_points.html">University<span> ( <span>20 Questions</span> ) </span></a></li>
+                                <li><i class="icon-asterisk"></i>Language<span> ( <span>2 Questions</span> ) </span></li>
+                                <li><i class="icon-asterisk"></i>Company<span> ( <span>2 Questions</span> ) </span></li>
+                                <li><i class="icon-asterisk"></i>Programs<span> ( <span>2 Questions</span> ) </span></li>
+                                <li><i class="icon-asterisk"></i>WordPress<span> ( <span>0 Questions</span> ) </span></li>
+                            </ul>
+                        </div>
+                    </div><!-- End user-profile-widget -->
+                </div><!-- End page-content -->
+            </div><!-- End col-md-9 -->
+            <aside class="col-md-3 sidebar">
+                <div class="widget widget_stats">
+                    <h3 class="widget_title">Stats</h3>
+                    <div class="ul_list ul_list-icon-ok">
+                        <ul>
+                            <li><i class="icon-question-sign"></i>Questions ( <span>20</span> )</li>
+                            <li><i class="icon-comment"></i>Answers ( <span>50</span> )</li>
+                            <li><i class="icon-comment"></i>Best Answers ( <span>10</span> )</li>
+                            <li><i class="icon-comment"></i>Users ( <span>100</span> )</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="widget">
+                    <h3 class="widget_title">Recent Questions</h3>
+                    <ul class="related-posts">
+                        <li class="related-item">
+                            <h3><a href="#">This is my first Question</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="clear"></div><span>Feb 22, 2014</span>
+                        </li>
+                        <li class="related-item">
+                            <h3><a href="#">This Is My Second Poll Question</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="clear"></div><span>Feb 22, 2014</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside><!-- End sidebar -->
+        </div>
+    </section><!-- End container -->
+</div><!-- End row -->
+	
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

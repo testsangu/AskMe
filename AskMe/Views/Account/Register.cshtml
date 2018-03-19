@@ -1,0 +1,76 @@
+﻿@model AskMe.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="breadcrumbs">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Register</h1>
+            </div>
+            <div class="col-md-12">
+                <div class="crumbs">
+                    <a href="#">Home</a>
+                    <span class="crumbs-span">/</span>
+                    <span class="current">Register</span>
+                </div>
+            </div>
+        </div><!-- End row -->
+    </section><!-- End container -->
+</div><!-- End breadcrumbs -->
+
+<section class="container main-content">
+    <div class="login">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-content">
+                    <h2>Register</h2>
+                    <div class="form-style form-style-3">
+                        <div class="form-inputs clearfix">
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                <p class="form-inputs clearfix">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    </div>
+                                </p>
+                                <p class="form-inputs clearfix">
+                                    @Html.LabelFor(m => m.Hometown, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.Hometown, new { @class = "form-control" })
+                                    </div>
+                                </p>
+                                <p class="form-inputs clearfix">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    </div>
+                                </p>
+                                <p class="form-inputs clearfix">
+                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-4 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    </div>
+                                </p>
+                                <div class="form-inputs clearfix">
+                                    <p class="form-submit login-submit">
+                                        <div class="col-md-10">
+                                            <input type="submit" class="button color small login-submit submit" value="Register" />
+                                        </div>
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div><!-- End page-content -->
+            </div><!-- End col-md-6 -->
+        </div><!-- End row -->
+    </div><!-- End login -->
+</section><!-- End container -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
