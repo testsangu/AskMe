@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AskMe.Models;
+using Business.Repository;
+using Data.AskUs;
 
 namespace AskMe.Controllers
 {
@@ -17,15 +19,19 @@ namespace AskMe.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private UserBAL _userBAL;
+        private TokenBAL _tokenBAL;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, UserBAL userBAL, TokenBAL tokenBAL)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _userBAL = userBAL;
+            _tokenBAL = tokenBAL;
         }
 
         public ApplicationSignInManager SignInManager
@@ -101,6 +107,22 @@ namespace AskMe.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+            //Data.AskUs.User user = _userBAL.Login(model.Email, model.Password);
+            //if(user!=null)
+            //{
+            //    Token token = _tokenBAL.GenerateToken(Convert.ToInt32(user.Id));                
+            //    HttpCookie faCookie = new HttpCookie("Token", token.AuthToken);
+            //    Response.Cookies.Add(faCookie);
+            //    return RedirectToLocal(returnUrl);
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", "Invalid login attempt.");
+            //    return View(model);
+            //}
+
+
+
         }
 
         //
@@ -162,22 +184,26 @@ namespace AskMe.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+            {                
+                Customer customer = new Customer();
+                customer.FirstName = model.FirstName;
+                customer.LastName = model.LastName;
+                customer.IsActive = true;
+                customer.CreatedDate = DateTime.Now.ToUniversalTime();
+                Data.AskUs.User user = new User();
+                user.Email = model.Email;
+                user.Password = model.Password;
+                user.CreatedDate = DateTime.Now.ToUniversalTime();
+                user.IsActive = true;
+                user.RoleId = 2;
+                user.UserName = model.FirstName + "." + model.LastName;
+                _userBAL.RegsterCustomer(customer, user);
+                if (_userBAL.RegsterCustomer(customer, user))
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                //AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form

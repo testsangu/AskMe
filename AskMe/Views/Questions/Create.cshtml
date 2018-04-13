@@ -1,15 +1,21 @@
 ﻿@model AskMe.Models.QuestionViewModel
-
+@using CaptchaMvc.HtmlHelpers;
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    .question-title{
-        width:80% !important;
+    .question-title {
+        width: 80% !important;
     }
+
     .question-details {
         width: 80% !important;
+        min-height: 200px;
+    }
+    .field-validation-error {
+        width: 82%;
+        float: right;
     }
 </style>
 <div class="breadcrumbs">
@@ -29,13 +35,10 @@
     </section><!-- End container -->
 </div><!-- End breadcrumbs -->
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Questions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-
-
-
+    
     <section class="container main-content">
         <div class="row">
             <div class="col-md-9">
@@ -49,23 +52,18 @@
                                 <p>
                                     @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "required" })
                                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "question-title" } })
-                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })                                   
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                                     <span class="form-description">Please choose an appropriate title for the question to answer it even easier .</span>
                                 </p>
-                                <p>
-                                    <label class="required">Category<span>*</span></label>
-                                    <span class="styled-select">
-                                        <select>
-                                            <option value="">Select a Category</option>
-                                            <option value="1">Category 1</option>
-                                            <option value="2">Category 2</option>
-                                        </select>
-                                    </span>
+                                <p>                                   
+                                    @Html.Label("Category", new { @class = "required" })
+                                    @Html.DropDownListFor(model => model.QuestionsCategoryId, Model.Category, "Select Category", new { @class = "question-title" })
+                                    @Html.ValidationMessageFor(model => model.QuestionsCategoryId,"", new { @class = "text-danger" })
                                     <span class="form-description">Please choose the appropriate section so easily search for your question .</span>
                                 </p>
                                 <label>Attachment</label>
                                 <div class="fileinputs">
-                                    <input type="file" class="file">
+                                    <input type="file" class="file" name="file" id="file">
                                     <div class="fakefile">
                                         <button type="button" class="button small margin_0">Select file</button>
                                         <span><i class="icon-arrow-up"></i>Browse</span>
@@ -76,38 +74,58 @@
                             <div id="form-textarea">
                                 <p>
                                     @Html.LabelFor(model => model.QuestionDetail, htmlAttributes: new { @class = "required" })
-                                    @Html.TextAreaFor(model => model.QuestionDetail,  new { @class = "question-details" } )
-                                    @Html.ValidationMessageFor(model => model.QuestionDetail, "", new { @class = "text-danger" })                                    
+                                    @Html.TextAreaFor(model => model.QuestionDetail, new { @class = "question-details" })
+                                    @Html.ValidationMessageFor(model => model.QuestionDetail, "", new { @class = "text-danger" })
                                     <span class="form-description">Type the description thoroughly and in detail .</span>
                                 </p>
                             </div>
                             <div id="form-inputs clearfix">
                                 <p>
-                                    <label class="required">I Need Help in this Location<span>*</span></label>
-                                    <input type="text" id="question-State" style="width: 82%;">
+                                    @Html.Label("I Need Help in this Location *")
+                                    @*<label class="required">I Need Help in this Location<span>*</span></label>*@
+                                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "question-title" } })
+                                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                    @*<input type="text" id="question-State" style="width: 82%;">*@
                                     <span class="form-description">Please choose an appropriate State for the question to answer.</span>
                                 </p>
                                 <p>
                                     <label class="required"></label>
-                                    <input type="text" id="question-city" style="width: 82%;">
+                                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "question-title" } })
+                                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                    @*<input type="text" id="question-city" style="width: 82%;">*@
                                     <span class="form-description">Please choose an appropriate City for the question to answer.</span>
                                 </p>
                             </div>
                             <div class="form-inputs clearfix">
                                 <p class="question_poll_p">
                                     <label for="remember_answer-828">Notified</label>
-                                    <input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">
+                                    @Html.CheckBoxFor(model => model.Notification)
+                                    @Html.ValidationMessageFor(model => model.Notification, "", new { @class = "text-danger" })
+                                    @*<input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">*@
                                     <span class="question_poll">Notified by e-mail at incoming answers.</span>
                                 </p>
                                 <p>
                                     <label for="remember_answer-828"></label>
-                                    <input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">
+                                    @Html.CheckBoxFor(model => model.GetCall)
+                                    @Html.ValidationMessageFor(model => model.GetCall, "", new { @class = "text-danger" })
+                                    @*<input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">*@
                                     <span class="question_poll">I am interested to get call/message from Lawyer.</span>
                                 </p>
                                 <p>
-                                    <label for="ask_captcha_828" class="required">Captcha<span>*</span></label>
-                                    <input type="text" id="question-title">
+                                    <label for="remember_answer-828"></label>
+                                    @Html.CheckBoxFor(model => model.Published)
+                                    @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
+                                    @*<input type="checkbox" id="remember_answer-828" name="remember_answer" value="1" checked="checked">*@
+                                    <span class="question_poll">Active this question as a private question.</span>
                                 </p>
+                                <p>
+                                    <div style="width:82%;float:right;">
+                                        @Html.MathCaptcha()
+                                    </div>
+                                    
+                                    <span class="Error" style="float:right;width:82%;color:#FF7361">  @ViewBag.ErrMessage </span>
+                                </p>
+
                             </div>
                             <p class="form-submit">
                                 <input type="submit" id="publish-question" value="Publish Your Question" class="button color small submit">
@@ -188,79 +206,4 @@
         </div><!-- End row -->
     </section><!-- End container -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="form-horizontal">
-        <h4>QuestionViewModel</h4>
-        <hr />
-        
-        <div class="form-group">
-            
-            <div class="col-md-10">
-                
-            </div>
-        </div>
-
-        <div class="form-group">
-            
-            <div class="col-md-10">
-                
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FilePath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FilePath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GetCall, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GetCall, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GetCall, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Notification, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Notification)
-                    @Html.ValidationMessageFor(model => model.Notification, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.ServiceLocationId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ServiceLocationId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ServiceLocationId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

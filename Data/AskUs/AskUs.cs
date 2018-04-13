@@ -37,13 +37,24 @@ namespace Data.AskUs
     public interface IAskUsDbContext : System.IDisposable
     {
         System.Data.Entity.DbSet<AnswerComment> AnswerComments { get; set; } // AnswerComment
+        System.Data.Entity.DbSet<AnswerReview> AnswerReviews { get; set; } // AnswerReview
         System.Data.Entity.DbSet<AnswerStatu> AnswerStatus { get; set; } // AnswerStatus
+        System.Data.Entity.DbSet<Customer> Customers { get; set; } // Customer
+        System.Data.Entity.DbSet<EmailAccount> EmailAccounts { get; set; } // EmailAccount
         System.Data.Entity.DbSet<LawFirm> LawFirms { get; set; } // LawFirm
+        System.Data.Entity.DbSet<MessageTemplate> MessageTemplates { get; set; } // MessageTemplate
+        System.Data.Entity.DbSet<OrderNote> OrderNotes { get; set; } // OrderNote
         System.Data.Entity.DbSet<Question> Questions { get; set; } // Question
         System.Data.Entity.DbSet<QuestionAnswer> QuestionAnswers { get; set; } // QuestionAnswer
+        System.Data.Entity.DbSet<QuestionOrder> QuestionOrders { get; set; } // QuestionOrder
+        System.Data.Entity.DbSet<QuestionReview> QuestionReviews { get; set; } // QuestionReview
+        System.Data.Entity.DbSet<QuestionReviewHelpfulness> QuestionReviewHelpfulnesses { get; set; } // QuestionReviewHelpfulness
         System.Data.Entity.DbSet<QuestionsCategory> QuestionsCategories { get; set; } // QuestionsCategory
         System.Data.Entity.DbSet<QuestionStatu> QuestionStatus { get; set; } // QuestionStatus
+        System.Data.Entity.DbSet<QuestionTag> QuestionTags { get; set; } // QuestionTag
+        System.Data.Entity.DbSet<QuestionView> QuestionViews { get; set; } // QuestionView
         System.Data.Entity.DbSet<ServiceLocation> ServiceLocations { get; set; } // ServiceLocation
+        System.Data.Entity.DbSet<Token> Tokens { get; set; } // Token
         System.Data.Entity.DbSet<User> Users { get; set; } // User
         System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
@@ -69,13 +80,24 @@ namespace Data.AskUs
     public class AskUsDbContext : System.Data.Entity.DbContext, IAskUsDbContext
     {
         public System.Data.Entity.DbSet<AnswerComment> AnswerComments { get; set; } // AnswerComment
+        public System.Data.Entity.DbSet<AnswerReview> AnswerReviews { get; set; } // AnswerReview
         public System.Data.Entity.DbSet<AnswerStatu> AnswerStatus { get; set; } // AnswerStatus
+        public System.Data.Entity.DbSet<Customer> Customers { get; set; } // Customer
+        public System.Data.Entity.DbSet<EmailAccount> EmailAccounts { get; set; } // EmailAccount
         public System.Data.Entity.DbSet<LawFirm> LawFirms { get; set; } // LawFirm
+        public System.Data.Entity.DbSet<MessageTemplate> MessageTemplates { get; set; } // MessageTemplate
+        public System.Data.Entity.DbSet<OrderNote> OrderNotes { get; set; } // OrderNote
         public System.Data.Entity.DbSet<Question> Questions { get; set; } // Question
         public System.Data.Entity.DbSet<QuestionAnswer> QuestionAnswers { get; set; } // QuestionAnswer
+        public System.Data.Entity.DbSet<QuestionOrder> QuestionOrders { get; set; } // QuestionOrder
+        public System.Data.Entity.DbSet<QuestionReview> QuestionReviews { get; set; } // QuestionReview
+        public System.Data.Entity.DbSet<QuestionReviewHelpfulness> QuestionReviewHelpfulnesses { get; set; } // QuestionReviewHelpfulness
         public System.Data.Entity.DbSet<QuestionsCategory> QuestionsCategories { get; set; } // QuestionsCategory
         public System.Data.Entity.DbSet<QuestionStatu> QuestionStatus { get; set; } // QuestionStatus
+        public System.Data.Entity.DbSet<QuestionTag> QuestionTags { get; set; } // QuestionTag
+        public System.Data.Entity.DbSet<QuestionView> QuestionViews { get; set; } // QuestionView
         public System.Data.Entity.DbSet<ServiceLocation> ServiceLocations { get; set; } // ServiceLocation
+        public System.Data.Entity.DbSet<Token> Tokens { get; set; } // Token
         public System.Data.Entity.DbSet<User> Users { get; set; } // User
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
@@ -128,13 +150,24 @@ namespace Data.AskUs
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new AnswerCommentConfiguration());
+            modelBuilder.Configurations.Add(new AnswerReviewConfiguration());
             modelBuilder.Configurations.Add(new AnswerStatuConfiguration());
+            modelBuilder.Configurations.Add(new CustomerConfiguration());
+            modelBuilder.Configurations.Add(new EmailAccountConfiguration());
             modelBuilder.Configurations.Add(new LawFirmConfiguration());
+            modelBuilder.Configurations.Add(new MessageTemplateConfiguration());
+            modelBuilder.Configurations.Add(new OrderNoteConfiguration());
             modelBuilder.Configurations.Add(new QuestionConfiguration());
             modelBuilder.Configurations.Add(new QuestionAnswerConfiguration());
+            modelBuilder.Configurations.Add(new QuestionOrderConfiguration());
+            modelBuilder.Configurations.Add(new QuestionReviewConfiguration());
+            modelBuilder.Configurations.Add(new QuestionReviewHelpfulnessConfiguration());
             modelBuilder.Configurations.Add(new QuestionsCategoryConfiguration());
             modelBuilder.Configurations.Add(new QuestionStatuConfiguration());
+            modelBuilder.Configurations.Add(new QuestionTagConfiguration());
+            modelBuilder.Configurations.Add(new QuestionViewConfiguration());
             modelBuilder.Configurations.Add(new ServiceLocationConfiguration());
+            modelBuilder.Configurations.Add(new TokenConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new UserRoleConfiguration());
         }
@@ -142,13 +175,24 @@ namespace Data.AskUs
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
             modelBuilder.Configurations.Add(new AnswerCommentConfiguration(schema));
+            modelBuilder.Configurations.Add(new AnswerReviewConfiguration(schema));
             modelBuilder.Configurations.Add(new AnswerStatuConfiguration(schema));
+            modelBuilder.Configurations.Add(new CustomerConfiguration(schema));
+            modelBuilder.Configurations.Add(new EmailAccountConfiguration(schema));
             modelBuilder.Configurations.Add(new LawFirmConfiguration(schema));
+            modelBuilder.Configurations.Add(new MessageTemplateConfiguration(schema));
+            modelBuilder.Configurations.Add(new OrderNoteConfiguration(schema));
             modelBuilder.Configurations.Add(new QuestionConfiguration(schema));
             modelBuilder.Configurations.Add(new QuestionAnswerConfiguration(schema));
+            modelBuilder.Configurations.Add(new QuestionOrderConfiguration(schema));
+            modelBuilder.Configurations.Add(new QuestionReviewConfiguration(schema));
+            modelBuilder.Configurations.Add(new QuestionReviewHelpfulnessConfiguration(schema));
             modelBuilder.Configurations.Add(new QuestionsCategoryConfiguration(schema));
             modelBuilder.Configurations.Add(new QuestionStatuConfiguration(schema));
+            modelBuilder.Configurations.Add(new QuestionTagConfiguration(schema));
+            modelBuilder.Configurations.Add(new QuestionViewConfiguration(schema));
             modelBuilder.Configurations.Add(new ServiceLocationConfiguration(schema));
+            modelBuilder.Configurations.Add(new TokenConfiguration(schema));
             modelBuilder.Configurations.Add(new UserConfiguration(schema));
             modelBuilder.Configurations.Add(new UserRoleConfiguration(schema));
             return modelBuilder;
@@ -174,26 +218,48 @@ namespace Data.AskUs
     public class FakeAskUsDbContext : IAskUsDbContext
     {
         public System.Data.Entity.DbSet<AnswerComment> AnswerComments { get; set; }
+        public System.Data.Entity.DbSet<AnswerReview> AnswerReviews { get; set; }
         public System.Data.Entity.DbSet<AnswerStatu> AnswerStatus { get; set; }
+        public System.Data.Entity.DbSet<Customer> Customers { get; set; }
+        public System.Data.Entity.DbSet<EmailAccount> EmailAccounts { get; set; }
         public System.Data.Entity.DbSet<LawFirm> LawFirms { get; set; }
+        public System.Data.Entity.DbSet<MessageTemplate> MessageTemplates { get; set; }
+        public System.Data.Entity.DbSet<OrderNote> OrderNotes { get; set; }
         public System.Data.Entity.DbSet<Question> Questions { get; set; }
         public System.Data.Entity.DbSet<QuestionAnswer> QuestionAnswers { get; set; }
+        public System.Data.Entity.DbSet<QuestionOrder> QuestionOrders { get; set; }
+        public System.Data.Entity.DbSet<QuestionReview> QuestionReviews { get; set; }
+        public System.Data.Entity.DbSet<QuestionReviewHelpfulness> QuestionReviewHelpfulnesses { get; set; }
         public System.Data.Entity.DbSet<QuestionsCategory> QuestionsCategories { get; set; }
         public System.Data.Entity.DbSet<QuestionStatu> QuestionStatus { get; set; }
+        public System.Data.Entity.DbSet<QuestionTag> QuestionTags { get; set; }
+        public System.Data.Entity.DbSet<QuestionView> QuestionViews { get; set; }
         public System.Data.Entity.DbSet<ServiceLocation> ServiceLocations { get; set; }
+        public System.Data.Entity.DbSet<Token> Tokens { get; set; }
         public System.Data.Entity.DbSet<User> Users { get; set; }
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; }
 
         public FakeAskUsDbContext()
         {
             AnswerComments = new FakeDbSet<AnswerComment>("Id", "Name", "IsActive");
+            AnswerReviews = new FakeDbSet<AnswerReview>("Id", "UserId", "QuestionAnswerId", "IsApproved", "IsReviewed", "CreatedOnUtc");
             AnswerStatus = new FakeDbSet<AnswerStatu>("Id", "Name", "IsActive");
+            Customers = new FakeDbSet<Customer>("Id", "FirstName", "LastName", "IsActive", "CreatedDate");
+            EmailAccounts = new FakeDbSet<EmailAccount>("Id", "Email", "Host", "Port", "Username", "Password", "EnableSsl", "UseDefaultCredentials");
             LawFirms = new FakeDbSet<LawFirm>("Id");
+            MessageTemplates = new FakeDbSet<MessageTemplate>("Id", "Name", "IsActive", "DelayPeriodId", "AttachedDownloadId", "EmailAccountId", "LimitedToStores");
+            OrderNotes = new FakeDbSet<OrderNote>("Id", "QuestionOrder", "Note", "DisplayToCustomer", "CreatedOnUtc");
             Questions = new FakeDbSet<Question>("Id");
             QuestionAnswers = new FakeDbSet<QuestionAnswer>("Id", "AnswerDescription", "AnswerStatusId", "ParentAnswerId", "FromUserId", "ToUserId", "QuestionId", "Published", "IsActive", "CreatedBy", "CreatedDate");
+            QuestionOrders = new FakeDbSet<QuestionOrder>("Id", "OrderGuid", "QuestionId", "UserId", "BillingAddressId", "PickUpInStore", "OrderStatusId", "ShippingStatusId", "PaymentStatusId", "OrderSubtotalInclTax", "OrderSubtotalExclTax", "OrderSubTotalDiscountInclTax", "OrderSubTotalDiscountExclTax", "OrderShippingInclTax", "OrderShippingExclTax", "PaymentMethodAdditionalFeeInclTax", "PaymentMethodAdditionalFeeExclTax", "OrderTax", "OrderDiscount", "OrderTotal", "RefundedAmount", "AllowStoringCreditCardNumber", "Deleted", "CreatedOnUtc", "CustomOrderNumber");
+            QuestionReviews = new FakeDbSet<QuestionReview>("Id", "UserId", "QuestionId", "IsApproved", "Rating", "HelpfulYesTotal", "HelpfulNoTotal", "CreatedOnUtc");
+            QuestionReviewHelpfulnesses = new FakeDbSet<QuestionReviewHelpfulness>("Id", "QuestionReviewId", "WasHelpful", "UserId");
             QuestionsCategories = new FakeDbSet<QuestionsCategory>("Id", "Name", "IsActive");
             QuestionStatus = new FakeDbSet<QuestionStatu>("Id", "Status", "IsActive", "CreatedBy", "CreatedDate");
+            QuestionTags = new FakeDbSet<QuestionTag>("Id", "Name");
+            QuestionViews = new FakeDbSet<QuestionView>("Id", "QuestionId", "CreatedOnUtc");
             ServiceLocations = new FakeDbSet<ServiceLocation>("Id");
+            Tokens = new FakeDbSet<Token>("TokenId", "UserId", "AuthToken", "IssuedOn", "ExpiresOn");
             Users = new FakeDbSet<User>("Id");
             UserRoles = new FakeDbSet<UserRole>("Id", "RoleName", "IsActive", "CreatedBy", "CreatedDate");
         }
@@ -524,6 +590,22 @@ namespace Data.AskUs
         public bool IsActive { get; set; } // IsActive (Primary key)
     }
 
+    // AnswerReview
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class AnswerReview
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public int UserId { get; set; } // UserId (Primary key)
+        public int QuestionAnswerId { get; set; } // QuestionAnswerId (Primary key)
+        public bool IsApproved { get; set; } // IsApproved (Primary key)
+        public bool IsReviewed { get; set; } // IsReviewed (Primary key)
+        public string Title { get; set; } // Title
+        public string ReviewText { get; set; } // ReviewText
+        public string ReplyText { get; set; } // ReplyText
+        public int? Rating { get; set; } // Rating
+        public System.DateTime CreatedOnUtc { get; set; } // CreatedOnUtc (Primary key)
+    }
+
     // AnswerStatus
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class AnswerStatu
@@ -531,6 +613,33 @@ namespace Data.AskUs
         public int Id { get; set; } // Id (Primary key)
         public string Name { get; set; } // Name (Primary key) (length: 50)
         public bool IsActive { get; set; } // IsActive (Primary key)
+    }
+
+    // Customer
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class Customer
+    {
+        public long Id { get; set; } // Id (Primary key)
+        public string FirstName { get; set; } // FirstName (Primary key) (length: 50)
+        public string LastName { get; set; } // LastName (Primary key) (length: 50)
+        public bool IsActive { get; set; } // IsActive (Primary key)
+        public System.DateTime CreatedDate { get; set; } // CreatedDate (Primary key)
+        public System.DateTime? UpdatedDate { get; set; } // UpdatedDate
+    }
+
+    // EmailAccount
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class EmailAccount
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public string Email { get; set; } // Email (Primary key) (length: 255)
+        public string DisplayName { get; set; } // DisplayName (length: 255)
+        public string Host { get; set; } // Host (Primary key) (length: 255)
+        public int Port { get; set; } // Port (Primary key)
+        public string Username { get; set; } // Username (Primary key) (length: 255)
+        public string Password { get; set; } // Password (Primary key) (length: 255)
+        public bool EnableSsl { get; set; } // EnableSsl (Primary key)
+        public bool UseDefaultCredentials { get; set; } // UseDefaultCredentials (Primary key)
     }
 
     // LawFirm
@@ -561,6 +670,34 @@ namespace Data.AskUs
         public System.DateTime? UpdatedDate { get; set; } // UpdatedDate
     }
 
+    // MessageTemplate
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class MessageTemplate
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public string Name { get; set; } // Name (Primary key) (length: 200)
+        public string BccEmailAddresses { get; set; } // BccEmailAddresses (length: 200)
+        public string Subject { get; set; } // Subject (length: 1000)
+        public string Body { get; set; } // Body
+        public bool IsActive { get; set; } // IsActive (Primary key)
+        public int? DelayBeforeSend { get; set; } // DelayBeforeSend
+        public int DelayPeriodId { get; set; } // DelayPeriodId (Primary key)
+        public int AttachedDownloadId { get; set; } // AttachedDownloadId (Primary key)
+        public int EmailAccountId { get; set; } // EmailAccountId (Primary key)
+        public bool LimitedToStores { get; set; } // LimitedToStores (Primary key)
+    }
+
+    // OrderNote
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class OrderNote
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public long QuestionOrder { get; set; } // QuestionOrder (Primary key)
+        public string Note { get; set; } // Note (Primary key)
+        public bool DisplayToCustomer { get; set; } // DisplayToCustomer (Primary key)
+        public System.DateTime CreatedOnUtc { get; set; } // CreatedOnUtc (Primary key)
+    }
+
     // Question
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class Question
@@ -575,6 +712,7 @@ namespace Data.AskUs
         public long? UserId { get; set; } // UserId
         public int? StatusId { get; set; } // StatusId
         public int? ServiceLocationId { get; set; } // ServiceLocationId
+        public bool? Published { get; set; } // Published
         public bool? IsActive { get; set; } // IsActive
         public System.DateTime? CreatedDate { get; set; } // CreatedDate
         public string CreatedBy { get; set; } // CreatedBy (length: 50)
@@ -603,6 +741,88 @@ namespace Data.AskUs
         public System.DateTime? UpdatedDate { get; set; } // UpdatedDate
     }
 
+    // QuestionOrder
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionOrder
+    {
+        public long Id { get; set; } // Id (Primary key)
+        public System.Guid OrderGuid { get; set; } // OrderGuid (Primary key)
+        public int QuestionId { get; set; } // QuestionId (Primary key)
+        public int UserId { get; set; } // UserId (Primary key)
+        public int BillingAddressId { get; set; } // BillingAddressId (Primary key)
+        public int? ShippingAddressId { get; set; } // ShippingAddressId
+        public int? PickupAddressId { get; set; } // PickupAddressId
+        public bool PickUpInStore { get; set; } // PickUpInStore (Primary key)
+        public int OrderStatusId { get; set; } // OrderStatusId (Primary key)
+        public int ShippingStatusId { get; set; } // ShippingStatusId (Primary key)
+        public int PaymentStatusId { get; set; } // PaymentStatusId (Primary key)
+        public string PaymentMethodSystemName { get; set; } // PaymentMethodSystemName
+        public decimal OrderSubtotalInclTax { get; set; } // OrderSubtotalInclTax (Primary key)
+        public decimal OrderSubtotalExclTax { get; set; } // OrderSubtotalExclTax (Primary key)
+        public decimal OrderSubTotalDiscountInclTax { get; set; } // OrderSubTotalDiscountInclTax (Primary key)
+        public decimal OrderSubTotalDiscountExclTax { get; set; } // OrderSubTotalDiscountExclTax (Primary key)
+        public decimal OrderShippingInclTax { get; set; } // OrderShippingInclTax (Primary key)
+        public decimal OrderShippingExclTax { get; set; } // OrderShippingExclTax (Primary key)
+        public decimal PaymentMethodAdditionalFeeInclTax { get; set; } // PaymentMethodAdditionalFeeInclTax (Primary key)
+        public decimal PaymentMethodAdditionalFeeExclTax { get; set; } // PaymentMethodAdditionalFeeExclTax (Primary key)
+        public string TaxRates { get; set; } // TaxRates
+        public decimal OrderTax { get; set; } // OrderTax (Primary key)
+        public decimal OrderDiscount { get; set; } // OrderDiscount (Primary key)
+        public decimal OrderTotal { get; set; } // OrderTotal (Primary key)
+        public decimal RefundedAmount { get; set; } // RefundedAmount (Primary key)
+        public string CheckoutAttributeDescription { get; set; } // CheckoutAttributeDescription
+        public string CheckoutAttributesXml { get; set; } // CheckoutAttributesXml
+        public string CustomerIp { get; set; } // CustomerIp
+        public bool AllowStoringCreditCardNumber { get; set; } // AllowStoringCreditCardNumber (Primary key)
+        public string CardType { get; set; } // CardType
+        public string CardName { get; set; } // CardName
+        public string CardNumber { get; set; } // CardNumber
+        public string MaskedCreditCardNumber { get; set; } // MaskedCreditCardNumber
+        public string CardCvv2 { get; set; } // CardCvv2
+        public string CardExpirationMonth { get; set; } // CardExpirationMonth
+        public string CardExpirationYear { get; set; } // CardExpirationYear
+        public string AuthorizationTransactionId { get; set; } // AuthorizationTransactionId
+        public string AuthorizationTransactionCode { get; set; } // AuthorizationTransactionCode
+        public string AuthorizationTransactionResult { get; set; } // AuthorizationTransactionResult
+        public string CaptureTransactionId { get; set; } // CaptureTransactionId
+        public string CaptureTransactionResult { get; set; } // CaptureTransactionResult
+        public string SubscriptionTransactionId { get; set; } // SubscriptionTransactionId
+        public System.DateTime? PaidDateUtc { get; set; } // PaidDateUtc
+        public string ShippingMethod { get; set; } // ShippingMethod
+        public string ShippingRateComputationMethodSystemName { get; set; } // ShippingRateComputationMethodSystemName
+        public string CustomValuesXml { get; set; } // CustomValuesXml
+        public bool Deleted { get; set; } // Deleted (Primary key)
+        public System.DateTime CreatedOnUtc { get; set; } // CreatedOnUtc (Primary key)
+        public string CustomOrderNumber { get; set; } // CustomOrderNumber (Primary key)
+    }
+
+    // QuestionReview
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionReview
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public int UserId { get; set; } // UserId (Primary key)
+        public int QuestionId { get; set; } // QuestionId (Primary key)
+        public bool IsApproved { get; set; } // IsApproved (Primary key)
+        public string Title { get; set; } // Title
+        public string ReviewText { get; set; } // ReviewText
+        public string ReplyText { get; set; } // ReplyText
+        public int Rating { get; set; } // Rating (Primary key)
+        public int HelpfulYesTotal { get; set; } // HelpfulYesTotal (Primary key)
+        public int HelpfulNoTotal { get; set; } // HelpfulNoTotal (Primary key)
+        public System.DateTime CreatedOnUtc { get; set; } // CreatedOnUtc (Primary key)
+    }
+
+    // QuestionReviewHelpfulness
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionReviewHelpfulness
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public int QuestionReviewId { get; set; } // QuestionReviewId (Primary key)
+        public bool WasHelpful { get; set; } // WasHelpful (Primary key)
+        public int UserId { get; set; } // UserId (Primary key)
+    }
+
     // QuestionsCategory
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class QuestionsCategory
@@ -627,6 +847,25 @@ namespace Data.AskUs
         public System.DateTime CreatedDate { get; set; } // CreatedDate (Primary key)
     }
 
+    // QuestionTag
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionTag
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public string Name { get; set; } // Name (Primary key) (length: 400)
+    }
+
+    // QuestionView
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionView
+    {
+        public long Id { get; set; } // Id (Primary key)
+        public int? UserId { get; set; } // UserId
+        public int QuestionId { get; set; } // QuestionId (Primary key)
+        public string IpAddress { get; set; } // IpAddress (length: 15)
+        public System.DateTime CreatedOnUtc { get; set; } // CreatedOnUtc (Primary key)
+    }
+
     // ServiceLocation
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class ServiceLocation
@@ -640,6 +879,17 @@ namespace Data.AskUs
         public string IpAddress { get; set; } // IpAddress
     }
 
+    // Token
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class Token
+    {
+        public int TokenId { get; set; } // TokenId (Primary key)
+        public int UserId { get; set; } // UserId (Primary key)
+        public string AuthToken { get; set; } // AuthToken (Primary key) (length: 250)
+        public System.DateTime IssuedOn { get; set; } // IssuedOn (Primary key)
+        public System.DateTime ExpiresOn { get; set; } // ExpiresOn (Primary key)
+    }
+
     // User
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class User
@@ -650,6 +900,7 @@ namespace Data.AskUs
         public string Password { get; set; } // Password (length: 50)
         public int? RoleId { get; set; } // RoleId
         public long? LawFirmId { get; set; } // LawFirmId
+        public long? CustomerId { get; set; } // CustomerId
         public bool? IsActive { get; set; } // IsActive
         public bool? IsDeleted { get; set; } // IsDeleted
         public System.DateTime? CreatedDate { get; set; } // CreatedDate
@@ -691,6 +942,33 @@ namespace Data.AskUs
         }
     }
 
+    // AnswerReview
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class AnswerReviewConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AnswerReview>
+    {
+        public AnswerReviewConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public AnswerReviewConfiguration(string schema)
+        {
+            ToTable("AnswerReview", schema);
+            HasKey(x => new { x.Id, x.UserId, x.QuestionAnswerId, x.IsApproved, x.IsReviewed, x.CreatedOnUtc });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.QuestionAnswerId).HasColumnName(@"QuestionAnswerId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.IsApproved).HasColumnName(@"IsApproved").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.IsReviewed).HasColumnName(@"IsReviewed").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Title).HasColumnName(@"Title").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.ReviewText).HasColumnName(@"ReviewText").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.ReplyText).HasColumnName(@"ReplyText").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.Rating).HasColumnName(@"Rating").HasColumnType("int").IsOptional();
+            Property(x => x.CreatedOnUtc).HasColumnName(@"CreatedOnUtc").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
     // AnswerStatus
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class AnswerStatuConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AnswerStatu>
@@ -708,6 +986,55 @@ namespace Data.AskUs
             Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsRequired().HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // Customer
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class CustomerConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Customer>
+    {
+        public CustomerConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public CustomerConfiguration(string schema)
+        {
+            ToTable("Customer", schema);
+            HasKey(x => new { x.Id, x.FirstName, x.LastName, x.IsActive, x.CreatedDate });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.FirstName).HasColumnName(@"FirstName").HasColumnType("nvarchar").IsRequired().HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.LastName).HasColumnName(@"LastName").HasColumnType("nvarchar").IsRequired().HasMaxLength(50).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.UpdatedDate).HasColumnName(@"UpdatedDate").HasColumnType("datetime").IsOptional();
+        }
+    }
+
+    // EmailAccount
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class EmailAccountConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<EmailAccount>
+    {
+        public EmailAccountConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public EmailAccountConfiguration(string schema)
+        {
+            ToTable("EmailAccount", schema);
+            HasKey(x => new { x.Id, x.Email, x.Host, x.Port, x.Username, x.Password, x.EnableSsl, x.UseDefaultCredentials });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Email).HasColumnName(@"Email").HasColumnType("nvarchar").IsRequired().HasMaxLength(255).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.DisplayName).HasColumnName(@"DisplayName").HasColumnType("nvarchar").IsOptional().HasMaxLength(255);
+            Property(x => x.Host).HasColumnName(@"Host").HasColumnType("nvarchar").IsRequired().HasMaxLength(255).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Port).HasColumnName(@"Port").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Username).HasColumnName(@"Username").HasColumnType("nvarchar").IsRequired().HasMaxLength(255).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Password).HasColumnName(@"Password").HasColumnType("nvarchar").IsRequired().HasMaxLength(255).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.EnableSsl).HasColumnName(@"EnableSsl").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.UseDefaultCredentials).HasColumnName(@"UseDefaultCredentials").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
         }
     }
 
@@ -750,6 +1077,56 @@ namespace Data.AskUs
         }
     }
 
+    // MessageTemplate
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class MessageTemplateConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MessageTemplate>
+    {
+        public MessageTemplateConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public MessageTemplateConfiguration(string schema)
+        {
+            ToTable("MessageTemplate", schema);
+            HasKey(x => new { x.Id, x.Name, x.IsActive, x.DelayPeriodId, x.AttachedDownloadId, x.EmailAccountId, x.LimitedToStores });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsRequired().HasMaxLength(200).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.BccEmailAddresses).HasColumnName(@"BccEmailAddresses").HasColumnType("nvarchar").IsOptional().HasMaxLength(200);
+            Property(x => x.Subject).HasColumnName(@"Subject").HasColumnType("nvarchar").IsOptional().HasMaxLength(1000);
+            Property(x => x.Body).HasColumnName(@"Body").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.DelayBeforeSend).HasColumnName(@"DelayBeforeSend").HasColumnType("int").IsOptional();
+            Property(x => x.DelayPeriodId).HasColumnName(@"DelayPeriodId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.AttachedDownloadId).HasColumnName(@"AttachedDownloadId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.EmailAccountId).HasColumnName(@"EmailAccountId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.LimitedToStores).HasColumnName(@"LimitedToStores").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // OrderNote
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class OrderNoteConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<OrderNote>
+    {
+        public OrderNoteConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public OrderNoteConfiguration(string schema)
+        {
+            ToTable("OrderNote", schema);
+            HasKey(x => new { x.Id, x.QuestionOrder, x.Note, x.DisplayToCustomer, x.CreatedOnUtc });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.QuestionOrder).HasColumnName(@"QuestionOrder").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Note).HasColumnName(@"Note").HasColumnType("nvarchar(max)").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.DisplayToCustomer).HasColumnName(@"DisplayToCustomer").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CreatedOnUtc).HasColumnName(@"CreatedOnUtc").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
     // Question
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class QuestionConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Question>
@@ -774,6 +1151,7 @@ namespace Data.AskUs
             Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("bigint").IsOptional();
             Property(x => x.StatusId).HasColumnName(@"StatusId").HasColumnType("int").IsOptional();
             Property(x => x.ServiceLocationId).HasColumnName(@"ServiceLocationId").HasColumnType("int").IsOptional();
+            Property(x => x.Published).HasColumnName(@"Published").HasColumnType("bit").IsOptional();
             Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsOptional();
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime").IsOptional();
             Property(x => x.CreatedBy).HasColumnName(@"CreatedBy").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
@@ -811,6 +1189,121 @@ namespace Data.AskUs
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.UpdatedBy).HasColumnName(@"UpdatedBy").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
             Property(x => x.UpdatedDate).HasColumnName(@"UpdatedDate").HasColumnType("datetime").IsOptional();
+        }
+    }
+
+    // QuestionOrder
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionOrderConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<QuestionOrder>
+    {
+        public QuestionOrderConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public QuestionOrderConfiguration(string schema)
+        {
+            ToTable("QuestionOrder", schema);
+            HasKey(x => new { x.Id, x.OrderGuid, x.QuestionId, x.UserId, x.BillingAddressId, x.PickUpInStore, x.OrderStatusId, x.ShippingStatusId, x.PaymentStatusId, x.OrderSubtotalInclTax, x.OrderSubtotalExclTax, x.OrderSubTotalDiscountInclTax, x.OrderSubTotalDiscountExclTax, x.OrderShippingInclTax, x.OrderShippingExclTax, x.PaymentMethodAdditionalFeeInclTax, x.PaymentMethodAdditionalFeeExclTax, x.OrderTax, x.OrderDiscount, x.OrderTotal, x.RefundedAmount, x.AllowStoringCreditCardNumber, x.Deleted, x.CreatedOnUtc, x.CustomOrderNumber });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.OrderGuid).HasColumnName(@"OrderGuid").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.QuestionId).HasColumnName(@"QuestionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.BillingAddressId).HasColumnName(@"BillingAddressId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.ShippingAddressId).HasColumnName(@"ShippingAddressId").HasColumnType("int").IsOptional();
+            Property(x => x.PickupAddressId).HasColumnName(@"PickupAddressId").HasColumnType("int").IsOptional();
+            Property(x => x.PickUpInStore).HasColumnName(@"PickUpInStore").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderStatusId).HasColumnName(@"OrderStatusId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.ShippingStatusId).HasColumnName(@"ShippingStatusId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.PaymentStatusId).HasColumnName(@"PaymentStatusId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.PaymentMethodSystemName).HasColumnName(@"PaymentMethodSystemName").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.OrderSubtotalInclTax).HasColumnName(@"OrderSubtotalInclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderSubtotalExclTax).HasColumnName(@"OrderSubtotalExclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderSubTotalDiscountInclTax).HasColumnName(@"OrderSubTotalDiscountInclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderSubTotalDiscountExclTax).HasColumnName(@"OrderSubTotalDiscountExclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderShippingInclTax).HasColumnName(@"OrderShippingInclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderShippingExclTax).HasColumnName(@"OrderShippingExclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.PaymentMethodAdditionalFeeInclTax).HasColumnName(@"PaymentMethodAdditionalFeeInclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.PaymentMethodAdditionalFeeExclTax).HasColumnName(@"PaymentMethodAdditionalFeeExclTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.TaxRates).HasColumnName(@"TaxRates").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.OrderTax).HasColumnName(@"OrderTax").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderDiscount).HasColumnName(@"OrderDiscount").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.OrderTotal).HasColumnName(@"OrderTotal").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.RefundedAmount).HasColumnName(@"RefundedAmount").HasColumnType("decimal").IsRequired().HasPrecision(18,4).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CheckoutAttributeDescription).HasColumnName(@"CheckoutAttributeDescription").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CheckoutAttributesXml).HasColumnName(@"CheckoutAttributesXml").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CustomerIp).HasColumnName(@"CustomerIp").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.AllowStoringCreditCardNumber).HasColumnName(@"AllowStoringCreditCardNumber").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CardType).HasColumnName(@"CardType").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CardName).HasColumnName(@"CardName").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CardNumber).HasColumnName(@"CardNumber").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.MaskedCreditCardNumber).HasColumnName(@"MaskedCreditCardNumber").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CardCvv2).HasColumnName(@"CardCvv2").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CardExpirationMonth).HasColumnName(@"CardExpirationMonth").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CardExpirationYear).HasColumnName(@"CardExpirationYear").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.AuthorizationTransactionId).HasColumnName(@"AuthorizationTransactionId").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.AuthorizationTransactionCode).HasColumnName(@"AuthorizationTransactionCode").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.AuthorizationTransactionResult).HasColumnName(@"AuthorizationTransactionResult").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CaptureTransactionId).HasColumnName(@"CaptureTransactionId").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CaptureTransactionResult).HasColumnName(@"CaptureTransactionResult").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.SubscriptionTransactionId).HasColumnName(@"SubscriptionTransactionId").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.PaidDateUtc).HasColumnName(@"PaidDateUtc").HasColumnType("datetime").IsOptional();
+            Property(x => x.ShippingMethod).HasColumnName(@"ShippingMethod").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.ShippingRateComputationMethodSystemName).HasColumnName(@"ShippingRateComputationMethodSystemName").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.CustomValuesXml).HasColumnName(@"CustomValuesXml").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.Deleted).HasColumnName(@"Deleted").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CreatedOnUtc).HasColumnName(@"CreatedOnUtc").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CustomOrderNumber).HasColumnName(@"CustomOrderNumber").HasColumnType("nvarchar(max)").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // QuestionReview
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionReviewConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<QuestionReview>
+    {
+        public QuestionReviewConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public QuestionReviewConfiguration(string schema)
+        {
+            ToTable("QuestionReview", schema);
+            HasKey(x => new { x.Id, x.UserId, x.QuestionId, x.IsApproved, x.Rating, x.HelpfulYesTotal, x.HelpfulNoTotal, x.CreatedOnUtc });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.QuestionId).HasColumnName(@"QuestionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.IsApproved).HasColumnName(@"IsApproved").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.Title).HasColumnName(@"Title").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.ReviewText).HasColumnName(@"ReviewText").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.ReplyText).HasColumnName(@"ReplyText").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.Rating).HasColumnName(@"Rating").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.HelpfulYesTotal).HasColumnName(@"HelpfulYesTotal").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.HelpfulNoTotal).HasColumnName(@"HelpfulNoTotal").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CreatedOnUtc).HasColumnName(@"CreatedOnUtc").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // QuestionReviewHelpfulness
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionReviewHelpfulnessConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<QuestionReviewHelpfulness>
+    {
+        public QuestionReviewHelpfulnessConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public QuestionReviewHelpfulnessConfiguration(string schema)
+        {
+            ToTable("QuestionReviewHelpfulness", schema);
+            HasKey(x => new { x.Id, x.QuestionReviewId, x.WasHelpful, x.UserId });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.QuestionReviewId).HasColumnName(@"QuestionReviewId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.WasHelpful).HasColumnName(@"WasHelpful").HasColumnType("bit").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
         }
     }
 
@@ -860,6 +1353,47 @@ namespace Data.AskUs
         }
     }
 
+    // QuestionTag
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionTagConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<QuestionTag>
+    {
+        public QuestionTagConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public QuestionTagConfiguration(string schema)
+        {
+            ToTable("QuestionTag", schema);
+            HasKey(x => new { x.Id, x.Name });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsRequired().HasMaxLength(400).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
+    // QuestionView
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class QuestionViewConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<QuestionView>
+    {
+        public QuestionViewConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public QuestionViewConfiguration(string schema)
+        {
+            ToTable("QuestionView", schema);
+            HasKey(x => new { x.Id, x.QuestionId, x.CreatedOnUtc });
+
+            Property(x => x.Id).HasColumnName(@"Id").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("int").IsOptional();
+            Property(x => x.QuestionId).HasColumnName(@"QuestionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.IpAddress).HasColumnName(@"IpAddress").HasColumnType("nvarchar").IsOptional().HasMaxLength(15);
+            Property(x => x.CreatedOnUtc).HasColumnName(@"CreatedOnUtc").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
     // ServiceLocation
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class ServiceLocationConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<ServiceLocation>
@@ -884,6 +1418,28 @@ namespace Data.AskUs
         }
     }
 
+    // Token
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
+    public class TokenConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Token>
+    {
+        public TokenConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public TokenConfiguration(string schema)
+        {
+            ToTable("Token", schema);
+            HasKey(x => new { x.TokenId, x.UserId, x.AuthToken, x.IssuedOn, x.ExpiresOn });
+
+            Property(x => x.TokenId).HasColumnName(@"TokenId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.AuthToken).HasColumnName(@"AuthToken").HasColumnType("nvarchar").IsRequired().HasMaxLength(250).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.IssuedOn).HasColumnName(@"IssuedOn").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.ExpiresOn).HasColumnName(@"ExpiresOn").HasColumnType("datetime").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+        }
+    }
+
     // User
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.35.0.0")]
     public class UserConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<User>
@@ -904,6 +1460,7 @@ namespace Data.AskUs
             Property(x => x.Password).HasColumnName(@"Password").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
             Property(x => x.RoleId).HasColumnName(@"RoleId").HasColumnType("int").IsOptional();
             Property(x => x.LawFirmId).HasColumnName(@"LawFirmId").HasColumnType("bigint").IsOptional();
+            Property(x => x.CustomerId).HasColumnName(@"CustomerId").HasColumnType("bigint").IsOptional();
             Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsOptional();
             Property(x => x.IsDeleted).HasColumnName(@"IsDeleted").HasColumnType("bit").IsOptional();
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").HasColumnType("datetime").IsOptional();
